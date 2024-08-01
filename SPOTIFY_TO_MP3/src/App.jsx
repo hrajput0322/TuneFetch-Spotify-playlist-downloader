@@ -43,7 +43,6 @@ function App() {
 
   const fetchTracks = (playlistId) => {
     if (selectedPlaylist === playlistId) {
-      // Toggle off if the same playlist is clicked again
       setSelectedPlaylist(null);
       setTracks([]);
       return;
