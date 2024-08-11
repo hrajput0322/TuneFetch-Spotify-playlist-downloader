@@ -1,24 +1,21 @@
-import express from 'express';
-import youtubedl from 'youtube-dl-exec';
-import ffmpeg from 'fluent-ffmpeg';
-import ffmpegPath from 'ffmpeg-static';
-import axios from 'axios';
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import cors from 'cors';
+const express = require('express');
+const youtubedl = require('youtube-dl-exec');
+const ffmpeg = require('fluent-ffmpeg');
+const ffmpegPath = require('ffmpeg-static');
+const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
+const cors = require('cors');
+require('dotenv').config();
 
 const app = express();
 const PORT = 5000;
-const DEFAULT_API_KEY = 'AIzaSyAUXsjzAkKWh_ROj_GYvmaa7Dq5JbodL98';
+const DEFAULT_API_KEY = process.env.YOUTUBE_API_KEY;
 
 app.use(cors());
 app.use(express.json());
 
 ffmpeg.setFfmpegPath(ffmpegPath);
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 async function fetchYouTubeLinks(api_key, songNames) {
   try {
