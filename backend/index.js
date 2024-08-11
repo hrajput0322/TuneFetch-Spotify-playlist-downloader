@@ -9,7 +9,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 const DEFAULT_API_KEY = process.env.YOUTUBE_API_KEY;
 
 app.use(cors());
