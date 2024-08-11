@@ -138,8 +138,8 @@ function App() {
         )}
         <p className="description">Download all your favorite playlists...</p>
         {loading && (
-          <div className="spinner-border text-success" role="status">
-            <span className="sr-only">Loading...</span>
+          <div className="custom-spinner spinner-border" role="status">
+            <span className="sr-only"></span>
           </div>
         )}
       </div>
