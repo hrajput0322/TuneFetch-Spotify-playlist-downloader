@@ -98,7 +98,9 @@ async function downloadYouTubeAudios(api_key, songNames) {
     throw new Error("Failed to download audios");
   }
 }
-
+app.get('/', (req,res)=>{
+  res.send("hello")
+})
 app.post('/download', async (req, res) => {
   const { songs } = req.body;
 
