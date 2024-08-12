@@ -74,7 +74,7 @@ function App() {
     const songNames = tracks.map(track => track.track.name);
 
     try {
-      const response = await fetch('http://localhost:5000/download', {
+      const response = await fetch('http://localhost:3000/download', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
