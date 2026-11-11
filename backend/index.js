@@ -6,6 +6,7 @@ const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
 const cors = require('cors');
+const { configurSession, configureSession } = require('./auth');
 require('dotenv').config();
 
 const app = express();
@@ -111,6 +112,13 @@ app.post('/download', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+configureSession(app)
+.then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server is running on http://127.0.0.1:${PORT}`);
+  })
+})
+.catch((error) => {
+  console.error('Failed to start the server: ', error);
+  process.exit(1);
 });
